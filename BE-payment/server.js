@@ -29,8 +29,8 @@ app.post("/api/create-payment-link", async (req, res) => {
       orderCode: Number(String(new Date().getTime()).slice(-6)),
       amount: amountFromClient,
       description: "VE SU KIEN",
-      returnUrl: "http://192.168.10.19:5173/?status=success",
-      cancelUrl: "http://192.168.10.19:5173/?status=cancel",
+      returnUrl: "https://payos-payment.vercel.app/?status=success",
+      cancelUrl: "https://payos-payment.vercel.app/?status=cancel",
     };
 
     // Gọi sang hệ thống PayOS để tạo đường dẫn thanh toán chứa mã QR
