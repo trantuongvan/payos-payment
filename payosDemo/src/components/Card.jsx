@@ -11,7 +11,7 @@ const Card = ({price}) => {
             const numericAmount = parseInt(price);
 
             // Bắn request POST sang Backend Node.js đang chạy ở cổng 8080
-            const response = await fetch('http://192.168.10.19:8080/api/create-payment-link', {
+            const response = await fetch('https://payos-payment.onrender.com/api/create-payment-link', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
