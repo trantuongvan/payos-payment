@@ -1,0 +1,19 @@
+.card {
+  border: 2px solid black;
+  width: 150px;
+  height: 200px;
+  display: grid;
+}
+.container-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+p {
+  text-align: center;
+}
+.img {
+  background-color: rgb(182, 175, 175);
+  width: 120px;
+  height: 120px;
+}
