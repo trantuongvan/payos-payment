@@ -44,9 +44,29 @@ app.post("/api/create-payment-link", async (req, res) => {
   }
 });
 
+// API để đón Webhook từ PayOS gọi về
+app.post("/api/payos-webhook", (req, res) => {
+  try {
+    // Lấy dữ liệu PayOS gửi sang
+    const webhookData = req.body;
+    console.log("🔔 Nhận được Webhook từ PayOS:", webhookData);
+
+    // Bắt buộc phải trả về mã 200 JSON để hệ thống PayOS ghi nhận là cấu hình thành công
+    res.json({
+      success: true,
+      message: "Đã nhận webhook thành công",
+    });
+
+    // (Sau này khi có Database, bạn sẽ lấy webhookData.data.orderCode ra để update trạng thái vé thành 'Đã thanh toán' tại đây)
+  } catch (error) {
+    console.error("Lỗi xử lý webhook:", error.message);
+    res.status(500).json({ error: "Lỗi server nội bộ" });
+  }
+});
+
 // Chạy server trên cổng 8080
 app.listen(8080, () => {
   console.log(
-    "🔥 Backend Server đang chạy ngon lành tại http://localhost:8080",
+    "🔥 Backend Server đang chạy ngon lành tại https://payos-payment.onrender.com",
   );
 });
