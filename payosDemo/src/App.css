@@ -1,8 +1,51 @@
-.app {
+/* .app {
   width: 100%;
 }
 .card-grid {
   display: flex;
   justify-content: center;
   gap: 10px;
+} */
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+  padding: 48px 24px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-grid {
+  width: 100%;
+  max-width: 960px;
+
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+
+  justify-items: center;
+}
+@media (max-width: 768px) {
+  .app {
+    padding: 32px 20px;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding: 24px 16px;
+    align-items: flex-start;
+  }
+
+  .card-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
 }
