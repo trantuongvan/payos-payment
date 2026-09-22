@@ -64,9 +64,7 @@ app.post("/api/payos-webhook", (req, res) => {
   }
 });
 
-// Chạy server trên cổng 8080
-app.listen(8080, () => {
-  console.log(
-    "🔥 Backend Server đang chạy ngon lành tại https://payos-payment.onrender.com",
-  );
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`🔥 Backend Server đang chạy ngon lành trên cổng ${PORT}`);
 });
