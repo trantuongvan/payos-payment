@@ -7,23 +7,18 @@ const Card = ({price}) => {
         setIsProcessing(true);
 
         try {
-            // Chuyển chuỗi giá tiền (ví dụ: "1000") thành kiểu số nguyên (Number)
             const numericAmount = parseInt(price);
-
-            // Bắn request POST sang Backend Node.js đang chạy ở cổng 8080
             const response = await fetch('https://payos-payment.onrender.com/api/create-payment-link', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ amount: numericAmount }) // Gửi số tiền lên Backend
+                body: JSON.stringify({ amount: numericAmount })
             });
 
             const data = await response.json();
 
-            // Nếu Backend trả về đường link checkout của PayOS thành công
             if (data.checkoutUrl) {
-                // Lập tức chuyển hướng trình duyệt sang trang quét mã QR của PayOS
                 window.location.href = data.checkoutUrl;
             } else {
                 alert('Không thể tạo mã thanh toán!');
